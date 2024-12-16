@@ -1,11 +1,10 @@
 <?php
 include '../db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $book_id  = $_POST['book_id'];
-    $member_id = $_POST['member_id'];
-    $loan_date = $_POST['loan_date'];
-    $return_date = $_POST['return_date'];
-    $sql = "INSERT INTO loans (book_id,member_id, loan_date,return_date) VALUES ($book_id,$member_id, '$loan_date','$return_date')";
+    $name = $_POST['name'];
+    $email   = $_POST['email'];
+    $join_date = $_POST['join_date'];
+    $sql = "INSERT INTO members (name,email, join_date) VALUES ('$name', '$email', '$join_date')";
     if ($conn->query($sql)) {
         header(header: 'location:read.php');
     } else {
@@ -21,7 +20,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Loans</title>
+    <title>Create Members</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -30,29 +29,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <h1>
-        Create Loans
+        Create Members
     </h1>
 
     <form class="form" method="POST">
         <div>
-            <label for="book_id ">book_id  : </label>
-            <input type="number" name="book_id"  placeholder="book_id">
+            <label for="name">Name : </label>
+            <input type="text" name="name"  placeholder="name">
             <br />
             <br />
-            <label for="member_id  ">member id : </label>
-            <input type="number" name="member_id"  placeholder="member id">
+            <label for="email ">email : </label>
+            <input type="email" name="email"  placeholder="email">
             <br />
             <br />
-            <label for="loan_date">loan_date : </label>
-            <input type="date" name="loan_date"  placeholder="loan_date">
-            <br />
-            <br />
-            <label for="return_date">return_date : </label>
-            <input type="date" name="return_date"  placeholder="return_date">
-            <br />
-            <br />
+            <label for="join_date">join_date : </label>
+            <input type="date" name="join_date"  placeholder="join_date">
             <div>
-                <button type="submit">Add Loans</button>
+                <button type="submit">Add Member</button>
             </div>
 
         </div>

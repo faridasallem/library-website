@@ -1,15 +1,13 @@
 <?php
 include '../db.php';
 $id = $_GET['id'];
-$loans = $conn->query("SELECT * FROM loans WHERE id = $id")->fetch_assoc();
+$members = $conn->query("SELECT * FROM members WHERE id = $id")->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $book_id = $_POST['book_id'];
-    $member_id  = $_POST['member_id'];
-    $loan_date = $_POST['loan_date'];
-    $return_date = $_POST['return_date'];
-    
-    $sql = "UPDATE loans SET book_id = '$book_id', member_id = $member_id, loan_date='$loan_date', return_date = '$return_date' where id = $id";
+    $name = $_POST['name'];
+    $email   = $_POST['email'];
+    $join_date = $_POST['join_date'];
+    $sql = "UPDATE members SET name = '$name', email = '$email', join_date='$join_date' where id = $id";
     if ($conn->query($sql)) {
         header(header: 'location:read.php');
     } else {
@@ -25,7 +23,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Update loans</title>
+    <title>Create Author</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,27 +32,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <h1>
-        Update loans
+        Update Members
     </h1>
 
     <form class="form" method="POST">
         <div>
-        <label for="book_id">book_id : </label>
-            <input type="number" name="book_id" value="<?php echo $loans['book_id']?>"  placeholder="book_id">
+        <label for="name">Name : </label>
+            <input type="text" name="name" value="<?php echo $members['name']?>"  placeholder="name">
             <br />
             <br />
-            <label for="membre_id ">author id : </label>
-            <input type="number" name="member_id" value="<?php echo $loans['member_id']?>"  placeholder="member_id">
+            <label for="email ">email id : </label>
+            <input type="email" name="email" value="<?php echo $members['email']?>"  placeholder="email">
             <br />
             <br />
-            <label for="loan_date">loan_date : </label>
-            <input type="date" name="loan_date" value="<?php echo $loans['loan_date']?>" placeholder="loan_date">
-            <br />
-            <br />
-            <label for="return_date">return_date : </label>
-            <input type="text" name="return_date" value="<?php echo $loans['return_date']?>" placeholder="return_date">
+            <label for="join_date">join_date : </label>
+            <input type="date" name="join_date" value="<?php echo $members['join_date']?>" placeholder="join_date">
             <div>
-                <button type="submit">Update loans</button>
+                <button type="submit">Update Members</button>
             </div>
 
         </div>

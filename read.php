@@ -1,6 +1,6 @@
 <?php
 include '../db.php';
-$sql = "SELECT * FROM loans";
+$sql = "SELECT * FROM members";
 $result = $conn->query($sql);
 
 
@@ -14,21 +14,20 @@ $result = $conn->query($sql);
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>View Loans</title>
+    <title>View Members</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Nunito:ital,wght@0,200..1000;1,200..1000&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap" rel="stylesheet">
 </head>
 <body>
-<h1>Loans list</h1>
+<h1>Members list</h1>
 <table class="table">
 <tr>
     <th>ID</th>
-    <th>book_id </th>
-    <th>member_id </th>
-    <th>loan_date </th>
-    <th>return_date</th>
+    <th>name</th>
+    <th>email</th>
+    <th>join date</th>
     <th>Upadte</th>
     <th>Delete</th>
 </tr>
@@ -36,10 +35,10 @@ $result = $conn->query($sql);
 <?php while($row = $result->fetch_assoc()): ?>
 <tr>
     <td> <?php echo $row['id']; ?> </td>
-    <td> <?php echo $row['book_id']; ?> </td>
-    <td> <?php echo $row['member_id']; ?> </td>
-    <td> <?php echo $row['loan_date']; ?> </td>
-    <td> <?php echo $row['return_date']; ?> </td>
+    <td> <?php echo $row['name']; ?> </td>
+    <td> <?php echo $row['email']; ?> </td>
+    <td> <?php echo $row['join_date']; ?> </td>
+
     <td>
         <a href="update.php?id=<?php  echo $row['id'];?>"><button class="update">
             Edit
@@ -59,7 +58,7 @@ $result = $conn->query($sql);
 
 <div class="flex">
 
-<a href="creat.php" ><button class="add-author">Add New Loans</button></a>
+<a href="creat.php" ><button class="add-author">Add New members</button></a>
 <a href="../index.php" ><button class="add-author">Back</button></a>
 
 </div>
