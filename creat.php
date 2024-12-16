@@ -1,10 +1,12 @@
 <?php
 include '../db.php';
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
-    $birth_date = $_POST['birth_date'];
-    $nationality = $_POST['nationality'];
-    $sql = "INSERT INTO authors (name, birth_date, nationality) VALUES ('$name', '$birth_date', '$nationality')";
+    $title = $_POST['title'];
+    $author_id  = $_POST['author_id'];
+    $publish_date = $_POST['publish_date'];
+    $genre = $_POST['genre'];
+    $isbn  = $_POST['isbn'];
+    $sql = "INSERT INTO books (title,author_id, publish_date,genre,isbn) VALUES ('$title', '$author_id', '$publish_date','$genre','$isbn')";
     if ($conn->query($sql)) {
         header(header: 'location:read.php');
     } else {
@@ -20,7 +22,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Author</title>
+    <title>Create Books</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -29,31 +31,39 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <h1>
-        Create Author
+        Create Books
     </h1>
 
     <form class="form" method="POST">
-        <div>
-            <label for="name">Name : </label>
-            <input type="text" name="name"  placeholder="Name">
-            <br />
-            <br />
-            <label for="name">birth_date : </label>
-            <input type="date" name="birth_date"  placeholder="birth_date">
-            <br />
-            <br />
-            <label for="name">Nationality : </label>
-            <input type="text" name="nationality"  placeholder="Nationality">
-            <div>
-                <button type="submit">Add Author</button>
-            </div>
+    <div>
+        <label for="Title">Title :</label>
+        <input type="text" name="title" placeholder="title">
+        <br /><br />
+        
+        <label for="author_id">author id :</label>
+        <input type="number" name="author_id" placeholder="author id">
+        <br /><br />
+        
+        <label for="publish_date">publish_date :</label>
+        <input type="date" name="publish_date" placeholder="publish_date">
+        <br /><br />
+        
+        <label for="genre">genre :</label>
+        <input type="text" name="genre" placeholder="genre">
+        <br /><br />
+        
+        <label for="isbn">isbn :</label>
+        <input type="text" name="isbn" placeholder="isbn">
+        <br /><br />
 
+        <!-- Buttons container -->
+        <div class="form-buttons">
+            <a href="read.php">
+                <button type="button" class="view">Back</button>
+            </a>
+            <button type="submit" class="add-books">Add Books</button>
         </div>
-    </form>
-    <div class="flex">
-    <a href="read.php"><button class="view">back</button></a>
-
     </div>
+</form>
 </body>
-
 </html>

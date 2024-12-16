@@ -1,13 +1,15 @@
 <?php
 include '../db.php';
 $id = $_GET['id'];
-$author = $conn->query("SELECT * FROM authors WHERE id = $id")->fetch_assoc();
+$books = $conn->query("SELECT * FROM books WHERE id = $id")->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
-    $birth_date = $_POST['birth_date'];
-    $nationality = $_POST['nationality'];
-    $sql = "UPDATE authors SET name = '$name', birth_date = '$birth_date', nationality='$nationality' where id = $id";
+    $title = $_POST['title'];
+    $author_id  = $_POST['author_id'];
+    $publish_date = $_POST['publish_date'];
+    $genre = $_POST['genre'];
+    $isbn  = $_POST['isbn'];
+    $sql = "UPDATE books SET title = '$title', author_id = $author_id, publish_date='$publish_date', genre = '$genre', isbn = '$isbn' where id = $id";
     if ($conn->query($sql)) {
         header(header: 'location:read.php');
     } else {
@@ -37,18 +39,26 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     <form class="form" method="POST">
         <div>
-            <label for="name">Name : </label>
-            <input type="text" name="name" value="<?php echo $author['name']?>"  placeholder="Name">
+        <label for="Title">Title : </label>
+            <input type="text" name="title" value="<?php echo $books['title']?>"  placeholder="title">
             <br />
             <br />
-            <label for="name">birth_date : </label>
-            <input type="date" name="birth_date" value="<?php echo $author['birth_date']?>"  placeholder="birth_date">
+            <label for="author_id ">author id : </label>
+            <input type="number" name="author_id" value="<?php echo $books['autor_id']?>"  placeholder="author id">
             <br />
             <br />
-            <label for="name">Nationality : </label>
-            <input type="text" name="nationality" value="<?php echo $author['nationality']?>"  placeholder="Nationality">
+            <label for="publish_date">publish_date : </label>
+            <input type="date" name="publish_date" value="<?php echo $books['publish_date']?>" placeholder="publish_date">
+            <br />
+            <br />
+            <label for="genre">genre : </label>
+            <input type="text" name="genre" value="<?php echo $books['genre']?>" placeholder="genre">
+            <br />
+            <br />
+            <label for="isbn ">isbn  : </label>
+            <input type="text" name="isbn" value="<?php echo $books['isbn']?>" placeholder="isbn ">
             <div>
-                <button type="submit">Update Author</button>
+                <button type="submit">Update Books</button>
             </div>
 
         </div>
