@@ -1,0 +1,209 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body{
+    background-color: #d9dcd6;
+    height: 80vh;
+    font-family: "Poppins", serif;
+
+}
+
+h1{
+    text-align: center;
+    font-weight: 900;
+    color: #16425b;
+    margin-top: 20px;
+    text-decoration: underline;
+    text-transform: uppercase;
+}
+
+
+.parent{
+    width: 100%;
+    height: 80vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+.child{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 20px;
+    width: 25%;
+    height: 30vh;
+    border-radius: 32px;
+    background-color: #16425b;
+    font-size: 22px;
+    text-align: center;
+    color: #81c3d7;
+    button {
+       margin-top: 30px;
+        width: 140px;
+        height: 41px;
+        border-radius: 22px;
+        border: 1px solid #3a7ca5;
+        background-color: #3a7ca5;
+        color: #ffffff;
+        transition: 0.3s;
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: 700;
+    }
+
+    button:hover{
+        border: 1px solid #2f6690;
+        background-color: #2f6690;
+    }
+}
+
+.form-buttons {
+    display: flex; /* Align buttons side-by-side */
+    justify-content: center; /* Center them horizontally */
+    gap: 15px; /* Add space between buttons */
+    margin-top: 20px; /* Add spacing above buttons */
+}
+
+button {
+    width: 140px;
+    height: 40px;
+    border-radius: 12px;
+    border: 1px solid #16425b;
+    background-color: #16425b;
+    color: #ffffff;
+    font-size: 18px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+button:hover {
+    background-color: #2f6690;
+    border-color: #2f6690;
+}
+
+.view {
+    background-color: transparent;
+    color: #16425b;
+    border: 2px solid #16425b;
+}
+
+.view:hover {
+    background-color: #16425b;
+    color: #ffffff;
+}
+
+
+.flex{
+    display: flex;
+    justify-content: center;
+    width: 100%;
+}
+
+.view{
+        width: 120px;
+    height: 61px;
+    border-radius: 12px;
+    border: 2px solid #16425b;
+    background-color: transparent;
+    color: #16425b;
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 700;
+ }
+ .view:hover{
+    border: 1px solid #16425b;
+    background-color: #16425b;
+    color: #ffffff;
+}
+
+.table{
+    display: flex;
+    height: 50vh;
+    align-items: center;
+    justify-content: center;
+    border-collapse: collapse;
+    margin: 20px auto;
+  
+    table, th, td{
+        border: 2px solid #16425b;
+        padding: 10px;
+        text-align: center;
+        font-size: 18px;
+        font-weight: 700;
+    }
+
+    td{
+        color: #16425b;
+        font-size: 16px;
+        font-weight: 400; 
+    }
+
+    .update{
+        
+        width: 120px;
+        height: 35px;
+        border-radius: 12px;
+        border: 2px solid #ffc600;
+        background-color: #ffc600;
+        color: #16425b;
+        transition: 0.3s;
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: 700;
+
+    
+    }
+    .update:hover{
+        border: 1px solid #fcf300;
+        background-color: #fcf300;
+        color: #16425b;
+    }
+
+    .delete{
+        
+        width: 120px;
+        height: 35px;
+        border-radius: 12px;
+        border: 2px solid #d90429;
+        background-color: #d90429;
+        color: #edf2f4;
+        transition: 0.3s;
+        cursor: pointer;
+        font-size: 22px;
+        font-weight: 700;
+
+    
+    }
+    .delete:hover{
+        border: 1px solid #780000;
+        background-color: #780000;
+        color: #edf2f4;
+    }
+}
+
+.add-author{
+    width: 220px;
+    height: 61px;
+    border-radius: 12px;
+    border: 2px solid #16425b;
+    background-color: transparent;
+    color: #16425b;
+    transition: 0.3s;
+    cursor: pointer;
+    font-size: 22px;
+    font-weight: 700;
+    margin: 20px !important;
+}
+
+.add-author:hover{
+    border: 1px solid #16425b;
+    background-color: #16425b;
+    color: #ffffff;
+}
