@@ -1,15 +1,15 @@
 <?php
 include '../db.php';
 $id = $_GET['id'];
-$books = $conn->query("SELECT * FROM books WHERE id = $id")->fetch_assoc();
+$loans = $conn->query("SELECT * FROM loans WHERE id = $id")->fetch_assoc();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $title = $_POST['title'];
-    $author_id  = $_POST['author_id'];
-    $publish_date = $_POST['publish_date'];
-    $genre = $_POST['genre'];
-    $isbn  = $_POST['isbn'];
-    $sql = "UPDATE books SET title = '$title', author_id = $author_id, publish_date='$publish_date', genre = '$genre', isbn = '$isbn' where id = $id";
+    $book_id = $_POST['book_id'];
+    $member_id  = $_POST['member_id'];
+    $loan_date = $_POST['loan_date'];
+    $return_date = $_POST['return_date'];
+    
+    $sql = "UPDATE loans SET book_id = '$book_id', member_id = $member_id, loan_date='$loan_date', return_date = '$return_date' where id = $id";
     if ($conn->query($sql)) {
         header(header: 'location:read.php');
     } else {
@@ -25,7 +25,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Create Author</title>
+    <title>Update loans</title>
     <link rel="stylesheet" href="../style/style.css">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -34,31 +34,27 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <body>
     <h1>
-        Update Author
+        Update loans
     </h1>
 
     <form class="form" method="POST">
         <div>
-        <label for="Title">Title : </label>
-            <input type="text" name="title" value="<?php echo $books['title']?>"  placeholder="title">
+        <label for="book_id">book_id : </label>
+            <input type="number" name="book_id" value="<?php echo $loans['book_id']?>"  placeholder="book_id">
             <br />
             <br />
-            <label for="author_id ">author id : </label>
-            <input type="number" name="author_id" value="<?php echo $books['autor_id']?>"  placeholder="author id">
+            <label for="membre_id ">author id : </label>
+            <input type="number" name="member_id" value="<?php echo $loans['member_id']?>"  placeholder="member_id">
             <br />
             <br />
-            <label for="publish_date">publish_date : </label>
-            <input type="date" name="publish_date" value="<?php echo $books['publish_date']?>" placeholder="publish_date">
+            <label for="loan_date">loan_date : </label>
+            <input type="date" name="loan_date" value="<?php echo $loans['loan_date']?>" placeholder="loan_date">
             <br />
             <br />
-            <label for="genre">genre : </label>
-            <input type="text" name="genre" value="<?php echo $books['genre']?>" placeholder="genre">
-            <br />
-            <br />
-            <label for="isbn ">isbn  : </label>
-            <input type="text" name="isbn" value="<?php echo $books['isbn']?>" placeholder="isbn ">
+            <label for="return_date">return_date : </label>
+            <input type="text" name="return_date" value="<?php echo $loans['return_date']?>" placeholder="return_date">
             <div>
-                <button type="submit">Update Books</button>
+                <button type="submit">Update loans</button>
             </div>
 
         </div>
